@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abjayan Photography - Analog Portraits on Film</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #faf8f6;
+            --text: #1a1a1a;
+            --accent: #c4a766;
+            --secondary: #e8dcc8;
+            --muted: #888;
+            --border: #ddd;
+        }
+
+        html, body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Crimson Text', serif;
+            line-height: 1.7;
+            letter-spacing: 0.3px;
+        }
+
+        /* HEADER */
+        header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: rgba(250, 248, 246, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .header-nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .header-nav a:hover {
+            color: var(--accent);
+        }
+
+        /* MAIN */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* HERO */
+        .hero {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 .accent {
+            color: var(--accent);
+        }
+
+        .hero-description {
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 2px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: 'Crimson Text', serif;
+        }
+
+        .btn-primary {
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--text);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* PRICING SECTION */
+        .pricing-section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--secondary);
+            letter-spacing: -0.5px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .price-card {
+            padding: 2rem;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .price-card h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .price-description {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .price-features {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .price-features li {
+            margin-bottom: 0.5rem;
+            list-style: none;
+        }
+
+        .price-features li:before {
+            content: "✓ ";
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .upgrade {
+            background: var(--bg);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            margin-top: 1.5rem;
+        }
+
+        .upgrade h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .upgrade-price {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* FEATURES */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .feature h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* ABOUT */
+        .about {
+            background: var(--secondary);
+            padding: 2.5rem;
+            border-radius: 2px;
+            margin-bottom: 4rem;
+        }
+
+        .about h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .about p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            color: var(--muted);
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .contact-value a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .contact-value a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        .turnaround {
+            background: var(--bg);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .pricing-grid,
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="logo">Abjayan</div>
+        <nav class="header-nav">
+            <a href="#pricing">Pricing</a>
+            <a href="#process">Process</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Portraits on <span class="accent">Film</span></h1>
+        <p class="hero-description">I shoot on my Pentax KM with one roll per session. You get the best frames from that roll as high-res scans. No edits. No filters. Just film.</p>
+        <div class="cta-buttons">
+            <a href="#pricing" class="btn btn-primary">See Pricing</a>
+            <a href="https://forms.gle/ygNF1iAQqXkvmhNV6" target="_blank" class="btn btn-secondary">Order</a>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="pricing-section">
+        <h2 class="section-title">Pricing</h2>
+        
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Color</h3>
+                <div class="price">₹1,750</div>
+                <p class="price-description">Kodak cinefilm</p>
+                <ul class="price-features">
+                    <li>Shoot anywhere on campus</li>
+                    <li>5–10 best frames</li>
+                    <li>High-res scans</li>
+                    <li>No edits</li>
+                </ul>
+            </div>
+
+            <div class="price-card">
+                <h3>Black & White</h3>
+                <div class="price">₹1,500</div>
+                <p class="price-description">Ilford or Kentmere</p>
+                <ul class="price-features">
+                    <li>Shoot anywhere on campus</li>
+                    <li>5–10 best frames</li>
+                    <li>High-res scans</li>
+                    <li>No edits</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="turnaround">
+            <strong>First two shoots are free</strong> (both B&W)<br/>
+            <strong>Turnaround:</strong> 7–10 days. <strong>Broken film?</strong> Full refund.
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+        <div class="feature">
+            <h3>One Roll Per Session</h3>
+            <p>I shoot one film roll (36 shots). You get the best 5–10 frames.</p>
+        </div>
+        <div class="feature">
+            <h3>No Edits</h3>
+            <p>The scans come straight from the lab. That's what you see.</p>
+        </div>
+        <div class="feature">
+            <h3>Pentax KM</h3>
+            <p>1970s camera. Kodak, Ilford, Kentmere film. That's the setup.</p>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about">
+        <h2>About</h2>
+        <p>I'm 15, shooting on IIT Madras campus. Started with digital, got into film because it forces you to slow down. One shot per exposure. You can't undo it.</p>
+        <p>I hand-pick the best frames from each roll and scan them. That's what you get. No color grading, no Lightroom adjustments. Just the film.</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <h2>Order</h2>
+        <div class="contact-methods">
+            <div class="contact-item">
+                <div class="contact-label">Form</div>
+                <div class="contact-value">
+                    <a href="https://forms.gle/ygNF1iAQqXkvmhNV6" target="_blank">Google Form</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">Email</div>
+                <div class="contact-value">
+                    <a href="mailto:abjayandiscord@gmail.com">abjayandiscord@gmail.com</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">WhatsApp</div>
+                <div class="contact-value">
+                    <a href="https://wa.me/19797092600" target="_blank">+1 (979) 709-2600</a>
+                </div>
+            </div>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--muted);">I'll get back to you in a day or two.</p>
+    </section>
+
+</main>
+
+<footer>
+    <p><a href="https://instagram.com/analogbyabjayan" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s;" onmouseover="this.style.borderBottomColor='var(--accent)'" onmouseout="this.style.borderBottomColor='transparent'">@analogbyabjayan</a> | IIT Madras | 2026</p>
+    <p style="margin-top: 0.5rem;">Shot on Kodak, Fuji & Agfa</p>
+</footer>
+
+</body>
+</html>
